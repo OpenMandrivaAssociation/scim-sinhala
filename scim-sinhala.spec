@@ -1,5 +1,6 @@
-%define version	0.1.0
-%define release	%mkrel 3
+%define snapdate 20060825
+%define version	0.2.0
+%define release	%mkrel 1
 
 %define scim_version	1.4.2
 
@@ -12,14 +13,17 @@ Version:		%{version}
 Release:		%{release}
 Group:		System/Internationalization
 License:		GPL
-URL:			http://sourceforge.jp/projects/scim-imengine/
-Source0:		%{name}-%{version}.tar.bz2
+URL:			http://sinhala.sourceforge.net
+Source0:		%{name}-trans-%{version}-%{snapdate}.tar.gz
+Patch1:         scim-sinhala-trans-autogen-automake.patch
+Patch2:         scim-sinhala-remove-timeout-206253.patch
+Patch3:         scim-sinhala-help-text-206114.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
-Requires:			%{libname} = %{version}
+Requires:			%{libname} = %{version}-%{release}
 Requires:			scim >= %{scim_version}
 # requires sinhala support
 Requires:			locales-si
-BuildRequires:		scim-devel >= 1.4.7-3mdk
+BuildRequires:		scim-devel >= 1.4.7-4mdk
 BuildRequires:		automake, libltdl-devel
 
 %description
@@ -35,10 +39,14 @@ scim-sinhala library.
 
 
 %prep
-%setup -q
+%setup -q -n %{name}-trans-%{version}-%{snapdate}
+%patch1 -p1 -b .1-automake17
+%patch2 -p1 -b .2-timeout
+%patch3 -p1 -b .3-help
 
 %build
-%configure2_5x
+./autogen.sh
+%configure2_5x --disable-static
 %make
 
 %install
