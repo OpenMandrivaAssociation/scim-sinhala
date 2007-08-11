@@ -1,5 +1,5 @@
 %define version	0.1.0
-%define release	%mkrel 2
+%define release	%mkrel 3
 
 %define scim_version	1.4.2
 
@@ -19,8 +19,8 @@ Requires:			%{libname} = %{version}
 Requires:			scim >= %{scim_version}
 # requires sinhala support
 Requires:			locales-si
-BuildRequires:		scim-devel >= %{scim_version}
-BuildRequires:		automake1.8, libltdl-devel
+BuildRequires:		scim-devel >= 1.4.7-3mdk
+BuildRequires:		automake, libltdl-devel
 
 %description
 Scim-sinhala is an SCIM IMEngine module for Sinhala.
@@ -29,7 +29,6 @@ Scim-sinhala is an SCIM IMEngine module for Sinhala.
 %package -n %{libname}
 Summary:	Scim-sinhala library
 Group:		System/Internationalization
-Provides:		%{libname_orig} = %{version}-%{release}
 
 %description -n %{libname}
 scim-sinhala library.
@@ -47,7 +46,7 @@ rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 
 # remove unneeded files
-rm -f %{buildroot}/%{_libdir}/scim-1.0/*/*.{a,la}
+rm -f %{buildroot}/%{scim_plugins_dir}/*/*.{a,la}
 
 # remove empty mo files
 for i in %{buildroot}/usr/share/locale/*/LC_MESSAGES/*.mo
@@ -67,7 +66,6 @@ rm -rf $RPM_BUILD_ROOT
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
-
 %files -f %{name}.lang
 %defattr(-,root,root)
 # ChangeLog and NEWS are currently empty.  
@@ -77,5 +75,4 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %{libname}
 %defattr(-,root,root)
 %doc COPYING
-%{_libdir}/scim-1.0/IMEngine/*.so
-
+%{scim_plugins_dir}/IMEngine/*.so
