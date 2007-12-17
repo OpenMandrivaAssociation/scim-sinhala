@@ -18,7 +18,6 @@ Source0:		%{name}-trans-%{version}-%{snapdate}.tar.gz
 Patch1:         scim-sinhala-trans-autogen-automake.patch
 Patch2:         scim-sinhala-remove-timeout-206253.patch
 Patch3:         scim-sinhala-help-text-206114.patch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:			%{libname} = %{version}-%{release}
 Requires:			scim >= %{scim_version}
 # requires sinhala support
