@@ -1,6 +1,6 @@
 %define snapdate 20060825
 %define version	0.2.0
-%define release	%mkrel 1
+%define release	%mkrel 3
 
 %define scim_version	1.4.2
 
