@@ -1,42 +1,27 @@
 %define snapdate 20060825
-%define version	0.2.0
-%define release	%mkrel 3
-
-%define scim_version	1.4.2
-
-%define libname_orig lib%{name}
-%define libname %mklibname %{name} 0
+%define scim_version	1.4.7
 
 Name:		scim-sinhala
 Summary:	An SCIM IMEngine module for Sinhala
-Version:		%{version}
-Release:		%{release}
+Version:	0.2.0
+Release:	%mkrel 4
 Group:		System/Internationalization
-License:		GPL
-URL:			http://sinhala.sourceforge.net
-Source0:		%{name}-trans-%{version}-%{snapdate}.tar.gz
+License:	GPL
+URL:		http://sinhala.sourceforge.net
+Source0:	%{name}-trans-%{version}-%{snapdate}.tar.gz
 Patch1:         scim-sinhala-trans-autogen-automake.patch
 Patch2:         scim-sinhala-remove-timeout-206253.patch
 Patch3:         scim-sinhala-help-text-206114.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
-Requires:			%{libname} = %{version}-%{release}
-Requires:			scim >= %{scim_version}
+Requires:	scim-client = %{scim_api}
 # requires sinhala support
-Requires:			locales-si
-BuildRequires:		scim-devel >= 1.4.7-4mdk
-BuildRequires:		automake, libltdl-devel
+Requires:	locales-si
+BuildRequires:	scim-devel >= 1.4.7-4mdk
+BuildRequires:	automake, libltdl-devel
+Obsoletes:	%{_lib}scim-sinhala0
 
 %description
 Scim-sinhala is an SCIM IMEngine module for Sinhala.
-
-
-%package -n %{libname}
-Summary:	Scim-sinhala library
-Group:		System/Internationalization
-
-%description -n %{libname}
-scim-sinhala library.
-
 
 %prep
 %setup -q -n %{name}-trans-%{version}-%{snapdate}
@@ -45,7 +30,7 @@ scim-sinhala library.
 %patch3 -p1 -b .3-help
 
 %build
-./autogen.sh
+autoreconf -fi
 %configure2_5x --disable-static
 %make
 
@@ -83,8 +68,4 @@ rm -rf $RPM_BUILD_ROOT
 # ChangeLog and NEWS are currently empty.  
 %doc AUTHORS COPYING README
 %{_datadir}/scim/icons/*
-
-%files -n %{libname}
-%defattr(-,root,root)
-%doc COPYING
 %{scim_plugins_dir}/IMEngine/*.so
