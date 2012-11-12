@@ -1,0 +1,38 @@
+--- scim-sinhala-trans-0.2.0-20060825/src/scim_sinhala_imengine_factory.cpp.3-help	2006-02-03 11:27:27.000000000 +0900
++++ scim-sinhala-trans-0.2.0-20060825/src/scim_sinhala_imengine_factory.cpp	2006-09-28 22:39:36.000000000 +0900
+@@ -137,7 +137,34 @@
+ WideString
+ SinhalaFactory::get_help () const
+ {
+-    return WideString ();
++    String help;
++
++    help =  String (_("Key summary:\n\n")) + 
++            String (_("\tථ -> t+H\n")) +
++            String (_("\tඪ -> D+H\n")) + 
++            String (_("\tධ -> d+H\n")) + 
++            String (_("\tෂ -> s+H\n")) +
++            String (_("\tශ -> S\n")) +
++            String (_("\tඳ -> d+G\n")) +
++            String (_("\tත් -> t+w\n")) +
++            String (_("\tම් -> m+w\n")) +
++            String (_("\tනී -> n+i+i\n")) + 
++            String (_("\tරූ -> r+u+u\n")) +
++            String (_("\tරෑ -> r+A+A\n")) +
++            String (_("\tප්‍ර -> p+R\n")) +
++            String (_("\tක්‍රී -> k+R+i+i\n")) +
++            String (_("\tඩ්‍රී -> D+R+i+i\n")) + 
++            String (_("\tක්‍ෂ -> k+W+s+H\n")) +
++            String (_("\tඥ -> Q\n")) +
++            String (_("\tඤ -> q\n")) +
++            String (_("\tවෘ -> v+U\n")) +
++            String (_("\tඎ -> U+U\n")) + 
++            String (_("\tලෙෝ -> l+o+o\n")) +
++            String (_("\tඣ -> J\n")) +
++            String (_("\tඹ -> M\n\n")) +
++            String (_("The uppercase letters mean Shift + letter:\n")) +
++            String (_("eg H = Shift + h\n"));
++    return utf8_mbstowcs (help);
+ }
+ 
+ String

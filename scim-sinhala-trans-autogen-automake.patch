@@ -1,0 +1,10 @@
+--- scim-sinhala-trans-0.2.0-20060825/autogen.sh~	2006-02-03 11:27:27.000000000 +0900
++++ scim-sinhala-trans-0.2.0-20060825/autogen.sh	2006-08-28 12:27:26.000000000 +0900
+@@ -1,5 +1,5 @@
+ libtoolize
+-aclocal-1.7
++aclocal
+ autoheader
+-automake-1.7 --add-missing
++automake --add-missing
+ autoconf

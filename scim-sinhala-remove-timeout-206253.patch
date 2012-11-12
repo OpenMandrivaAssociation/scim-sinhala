@@ -1,0 +1,22 @@
+--- scim-sinhala-trans-0.2.0-20060825/src/scim_sinhala_imengine.cpp~	2006-02-07 15:25:34.000000000 +0900
++++ scim-sinhala-trans-0.2.0-20060825/src/scim_sinhala_imengine.cpp	2006-09-28 21:52:55.000000000 +0900
+@@ -64,7 +64,6 @@
+ static int shift_r = 0;
+ static int shift_l = 0;
+ static unsigned int last_key = 0;
+-static unsigned int last_time = 0;
+ 
+ struct {
+ 	unsigned char character;
+@@ -410,11 +409,6 @@
+                        || event.is_scroll_lock_down()))
+         return false;
+ 
+-
+-    unsigned int new_time = time(NULL);
+-    if (new_time - last_time > 1) last_key = 0;
+-    last_time = new_time;
+-
+ 	c = find_consonent_by_key(event.code);
+ 	if (c >= 0) /* a consonent is pressed. */
+         return handle_consonant_pressed (event, c);
