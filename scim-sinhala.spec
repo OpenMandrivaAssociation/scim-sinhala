@@ -7,7 +7,7 @@ Version:	0.2.0
 Release:	%mkrel 4
 Group:		System/Internationalization
 License:	GPL
-URL:		http://sinhala.sourceforge.net
+URL:		https://sinhala.sourceforge.net
 Source0:	%{name}-trans-%{version}-%{snapdate}.tar.gz
 Patch1:         scim-sinhala-trans-autogen-automake.patch
 Patch2:         scim-sinhala-remove-timeout-206253.patch
