@@ -16,6 +16,9 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:	scim-client = %{scim_api}
 # requires sinhala support
 Requires:	locales-si
+BuildRequires:	autoconf
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:	scim-devel >= 1.4.7-4mdk
 BuildRequires:	automake, libltdl-devel
 Obsoletes:	%{_lib}scim-sinhala0
