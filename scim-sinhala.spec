@@ -4,7 +4,7 @@
 Name:		scim-sinhala
 Summary:	An SCIM IMEngine module for Sinhala
 Version:	0.2.0
-Release:	%mkrel 4
+Release:	5
 Group:		System/Internationalization
 License:	GPL
 URL:		https://sinhala.sourceforge.net
